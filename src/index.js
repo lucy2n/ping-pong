@@ -3,7 +3,7 @@ const context = canvas.getContext('2d');
 const grid = 15;
 const paddleHeight = grid * 5; 
 const maxPaddleY = canvas.height - grid - paddleHeight;
-let paddleSpeed = 6;
+let paddleSpeed = 10;
 let ballSpeed = 5;
 
 function collides(obj1, obj2) {
@@ -18,9 +18,9 @@ const leftPaddle = {
   x: grid * 2,
   y: canvas.height / 2 - paddleHeight / 2,
   // Ширина — одна клетка
-  width: grid,
+  width: grid, 
   // Высоту берём из константы
-  height: paddleHeight,
+  height: paddleHeight * 1.5, 
   // Платформа на старте никуда не движется
   dy: 0
 };
@@ -30,8 +30,8 @@ const rightPaddle = {
   x: canvas.width - grid * 3,
   y: canvas.height / 2 - paddleHeight / 2,
   // Задаём такую же ширину и высоту
-  width: grid,
-  height: paddleHeight,
+  width: grid ,
+  height: paddleHeight * 1.5,
   // Правая платформа тоже пока никуда не двигается
   dy: 0
 };
@@ -41,8 +41,8 @@ const ball = {
   x: canvas.width / 2,
   y: canvas.height / 2,
   // квадратный, размером с клетку
-  width: grid,
-  height: grid,
+  width: grid * 2,
+  height: grid * 2,
   // На старте мяч пока не забит, поэтому убираем признак того, что мяч нужно ввести в игру заново
   resetting: false,
   // Подаём мяч в правый верхний угол
@@ -77,7 +77,7 @@ function loop() {
     rightPaddle.y = maxPaddleY;
     }
     // Рисуем платформы белым цветом
-    context.fillStyle = 'white';
+    context.fillStyle = 'pink';
     // Каждая платформа — прямоугольник
     context.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
     context.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
